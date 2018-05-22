@@ -25,7 +25,7 @@ export class Player {
             }
         } else if (activePlayers.length == 3) {
             console.log(gameState);
-            if (gameState.dealer == activePlayers.indexOf(hero)) {
+            if (gameState.dealer == gameState.players.indexOf(hero)) {
                /* if (hero.stack > gameState.pot) {
                     betCallback(gameState.pot);
                 }else{
