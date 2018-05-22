@@ -27,7 +27,11 @@ export class Player {
             }
         } else {
             console.log(gameState);
-            this.basicStrat(hero, betCallback);
+            if (gameState.bet_index == 6) {
+                betCallback(gameState.pot);
+            }else {
+                this.basicStrat(hero, betCallback);
+            }
         }
     }
 
