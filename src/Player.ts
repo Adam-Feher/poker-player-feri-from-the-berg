@@ -29,11 +29,11 @@ export class Player {
 
     private basicStrat(hero: any, betCallback: (bet: number) => void) {
         if (hero.hole_cards[0].rank == hero.hole_cards[1].rank ||
-            (hero.hole_cards.filter(card => card.rank == 'A') > 1 &&
+            (hero.hole_cards.filter(card => card.rank == 'A').length > 0 &&
                 hero.hole_cards.filter(card => this.contains(card.rank, ['K', 'Q', 'J', '10', '9']))) ||
-            (hero.hole_cards.filter(card => card.rank == 'K') &&
+            (hero.hole_cards.filter(card => card.rank == 'K').length > 0 &&
                 hero.hole_cards.filter(card => this.contains(card.rank, ['Q', 'J', '10']))) ||
-            (hero.hole_cards.filter(card => card.rank == 'Q') &&
+            (hero.hole_cards.filter(card => card.rank == 'Q').length > 0 &&
                 hero.hole_cards.filter(card => this.contains(card.rank, ['J', '10'])))) {
             betCallback(hero.stack);
         }
