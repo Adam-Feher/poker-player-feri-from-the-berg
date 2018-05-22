@@ -27,7 +27,11 @@ export class Player {
             if (hero.stack == Math.min(...activePlayers.map(player => player.stack))) {
                 this.basicStrat(hero, betCallback)
             } else {
-                betCallback(0);
+                if (((hero.hole_cards[0].rank == hero.hole_cards[1].rank) && this.contains(hero.hole_cards[0], ['A', 'K', 'Q']))) {
+                    betCallback(hero.stack);
+                }else{
+                    betCallback(0);
+                }
             }
         } else {
             console.log(gameState);
