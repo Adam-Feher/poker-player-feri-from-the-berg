@@ -14,7 +14,7 @@ export class Player {
           }
       }
 
-      if (activePlayers.length >= 3) {
+      if (activePlayers.length > 3) {
           betCallback(0);
           return;
       }
