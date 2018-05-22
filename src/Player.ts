@@ -1,4 +1,5 @@
 import {Gamestate} from "./gamestate.model";
+import {Card} from "./card.model";
 
 export class Player {
 
@@ -26,9 +27,6 @@ export class Player {
         }
     }
 
-    public showdown(gameState: Gamestate): void {
-    }
-
     private basicStrat(hero: any, betCallback: (bet: number) => void) {
         if ((hero.hole_cards[0].rank == hero.hole_cards[1].rank && this.contains(hero.hole_cards[0],['A','K','Q','J','10','9'])) ||
             (hero.hole_cards.filter(card => card.rank == 'A').length > 0 &&
@@ -52,7 +50,20 @@ export class Player {
         return false;
     }
 
+    private haveCard(what: string, cards: Card[]): boolean {
+      return cards.filter(card => card.rank == what).length > 0;
+    }
 
+    private haveCardInRange(range: string[], cards: Card[]): boolean {
+      return cards.filter(card => this.contains(card.rank, range)).length > 0;
+    }
+
+    private sameAsCommunity(card: string, community: Card[]) {
+        return this.contains(card, community.map(card => card.rank));
+    }
+
+    public showdown(gameState: Gamestate): void {
+    }
 }
 
 export default Player;
