@@ -24,8 +24,10 @@ export class Player {
                this.basicStrat(hero, betCallback);
             }
         } else if (activePlayers.length == 3) {
-            if (hero.stack == Math.min(...activePlayers.map(player => player.stack))) {
-                this.basicStrat(hero, betCallback)
+            console.log(gameState);
+            if (gameState.dealer == activePlayers.indexOf(hero)) {
+                betCallback(gameState.pot);
+                //this.basicStrat(hero, betCallback)
             } else {
                 if (((hero.hole_cards[0].rank == hero.hole_cards[1].rank) && this.contains(hero.hole_cards[0].rank, ['A', 'K', 'Q']))) {
                     betCallback(hero.stack);
@@ -34,8 +36,10 @@ export class Player {
                 }
             }
         } else {
-            console.log(gameState);
             if (gameState.bet_index == 6) {
+                if (activePlayers.filter(player => player.name == 'Texas Rangers')) {
+                    this.basicStrat(hero, betCallback);
+                }
                 betCallback(gameState.pot);
             }else {
                 this.basicStrat(hero, betCallback);
