@@ -27,7 +27,7 @@ export class Player {
             console.log(gameState);
             console.log(gameState.players.indexOf(hero));
             if (gameState.dealer == gameState.players.indexOf(hero)) {
-                if (gameState.bet_index == 5) {
+                if (gameState.pot == gameState.small_blind *3) {
                     if (hero.stack > gameState.pot) {
                         betCallback(gameState.pot);
                     }else{
