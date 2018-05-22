@@ -41,7 +41,7 @@ export class Player {
             }
         } else {
             if (gameState.bet_index == 6) {
-                if (activePlayers.filter(player => player.name == 'Texas Rangers')) {
+                if (activePlayers.filter(player => player.name == 'Texas Rangers').length > 0) {
                     this.basicStrat(hero, betCallback);
                 }
                 betCallback(gameState.pot);
