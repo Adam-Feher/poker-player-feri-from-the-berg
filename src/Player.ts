@@ -3,9 +3,10 @@ import {Card} from "./card.model";
 
 export class Player {
 
+    private heroBet: number;
+    private villainBet: number;
+
     public betRequest(gameState: Gamestate, betCallback: (bet: number) => void): void {
-        console.log(gameState.round);
-        console.log(gameState.bet_index);
         const activePlayers = gameState.players.filter(player => player.stack > 0);
 
         let hero = null;
@@ -25,6 +26,7 @@ export class Player {
                 betCallback(0);
             }
         } else {
+            console.log(gameState);
             this.basicStrat(hero, betCallback);
         }
     }
@@ -32,11 +34,11 @@ export class Player {
     private basicStrat(hero: any, betCallback: (bet: number) => void) {
         if ((hero.hole_cards[0].rank == hero.hole_cards[1].rank && this.contains(hero.hole_cards[0],['A','K','Q','J','10','9'])) ||
             (this.haveCard('A',hero.hole_cards) &&
-                this.haveCardInRange(['K', 'Q', 'J', '10', '9'],hero.hole_cards) ||
+                this.haveCardInRange(['K', 'Q', 'J', '10', '9'],hero.hole_cards)) ||
             (this.haveCard('K',hero.hole_cards) &&
-                this.haveCardInRange(['Q', 'J', '10'],hero.hole_cards) ||
+                this.haveCardInRange(['Q', 'J', '10'],hero.hole_cards)) ||
             (this.haveCard('Q',hero.hole_cards) &&
-                this.haveCardInRange(['J', '10'],hero.hole_cards))))) {
+                this.haveCardInRange(['J', '10'],hero.hole_cards))) {
             betCallback(hero.stack);
         }else{
             betCallback(0);
