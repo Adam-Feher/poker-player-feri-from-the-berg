@@ -18,7 +18,11 @@ export class Player {
 
 
         if (activePlayers.length > 3) {
-           this.basicStrat(hero, betCallback);
+            if (hero.stack >= 2000) {
+                betCallback(0);
+            }else{
+               this.basicStrat(hero, betCallback);
+            }
         } else if (activePlayers.length == 3) {
             if (hero.stack == Math.min(...activePlayers.map(player => player.stack))) {
                 this.basicStrat(hero, betCallback)
