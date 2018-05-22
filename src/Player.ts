@@ -32,7 +32,7 @@ export class Player {
     }
 
     private basicStrat(hero: any, betCallback: (bet: number) => void) {
-        if ((hero.hole_cards[0].rank == hero.hole_cards[1].rank && this.contains(hero.hole_cards[0],['A','K','Q','J','10','9'])) ||
+        if (((hero.hole_cards[0].rank == hero.hole_cards[1].rank) && this.contains(hero.hole_cards[0],['A','K','Q','J','10','9'])) ||
             (this.haveCard('A',hero.hole_cards) &&
                 this.haveCardInRange(['K', 'Q', 'J', '10', '9'],hero.hole_cards)) ||
             (this.haveCard('K',hero.hole_cards) &&
