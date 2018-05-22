@@ -29,12 +29,12 @@ export class Player {
 
     private basicStrat(hero: any, betCallback: (bet: number) => void) {
         if ((hero.hole_cards[0].rank == hero.hole_cards[1].rank && this.contains(hero.hole_cards[0],['A','K','Q','J','10','9'])) ||
-            (hero.hole_cards.filter(card => card.rank == 'A').length > 0 &&
-                hero.hole_cards.filter(card => this.contains(card.rank, ['K', 'Q', 'J', '10', '9'])) > 0) ||
-            (hero.hole_cards.filter(card => card.rank == 'K').length > 0 &&
-                hero.hole_cards.filter(card => this.contains(card.rank, ['Q', 'J', '10'])) > 0) ||
-            (hero.hole_cards.filter(card => card.rank == 'Q').length > 0 &&
-                hero.hole_cards.filter(card => this.contains(card.rank, ['J', '10'])) > 0)) {
+            (this.haveCard('A',hero.hole_cards) &&
+                this.haveCardInRange(['K', 'Q', 'J', '10', '9'],hero.hole_cards) ||
+            (this.haveCard('K',hero.hole_cards) &&
+                this.haveCardInRange(['Q', 'J', '10'],hero.hole_cards) ||
+            (this.haveCard('Q',hero.hole_cards) &&
+                this.haveCardInRange(['J', '10'],hero.hole_cards))))) {
             betCallback(hero.stack);
         }else{
             betCallback(0);
