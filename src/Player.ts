@@ -4,7 +4,7 @@ export class Player {
 
   public betRequest(gameState: Gamestate, betCallback: (bet: number) => void): void {
     console.log(gameState);
-      const activePlayers = gameState.players.filter(player => player.status == 'active');
+      const activePlayers = gameState.players.filter(player => player.stack > 0);
       console.log(activePlayers);
       
       let hero = null;
