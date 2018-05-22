@@ -3,7 +3,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { Player } from './Player';
 
-const VERSION = "SZERETLEK ANYUKÁM BAZDMEG!";
+const VERSION = "SZERETLEK ANYUKAM BAZDMEG!";
 
 const app = express();
 const player = new Player();
