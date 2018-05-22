@@ -5,7 +5,13 @@ export class Player {
   public betRequest(gameState: Gamestate, betCallback: (bet: number) => void): void {
     console.log(gameState);
       const activePlayers = gameState.players.filter(player => player.status == 'active');
-      const hero = gameState.players.find(player => player.hasOwnProperty('hole_cards'));
+      
+      let hero = null;
+      for (let player of activePlayers) {
+          if (player.hasOwnProperty('hole_cards')) {
+              hero = player;
+          }
+      }
 
       if (activePlayers.length > 2) {
           betCallback(0);
