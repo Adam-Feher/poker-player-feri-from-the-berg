@@ -4,6 +4,8 @@ import {Card} from "./card.model";
 export class Player {
 
     public betRequest(gameState: Gamestate, betCallback: (bet: number) => void): void {
+        console.log(gameState.round);
+        console.log(gameState.bet_index);
         const activePlayers = gameState.players.filter(player => player.stack > 0);
 
         let hero = null;
