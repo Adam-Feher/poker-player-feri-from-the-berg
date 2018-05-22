@@ -24,7 +24,6 @@ export class Player {
         } else {
             this.basicStrat(hero, betCallback);
         }
-        betCallback(0);
     }
 
     public showdown(gameState: Gamestate): void {
@@ -39,6 +38,8 @@ export class Player {
             (hero.hole_cards.filter(card => card.rank == 'Q').length > 0 &&
                 hero.hole_cards.filter(card => this.contains(card.rank, ['J', '10'])) > 0)) {
             betCallback(hero.stack);
+        }else{
+            betCallback(0);
         }
     }
 
