@@ -26,8 +26,12 @@ export class Player {
         } else if (activePlayers.length == 3) {
             console.log(gameState);
             if (gameState.dealer == activePlayers.indexOf(hero)) {
-                betCallback(gameState.pot);
-                //this.basicStrat(hero, betCallback)
+               /* if (hero.stack > gameState.pot) {
+                    betCallback(gameState.pot);
+                }else{
+                    betCallback(hero.stack);
+                }*/
+                this.basicStrat(hero, betCallback)
             } else {
                 if (((hero.hole_cards[0].rank == hero.hole_cards[1].rank) && this.contains(hero.hole_cards[0].rank, ['A', 'K', 'Q']))) {
                     betCallback(hero.stack);
