@@ -14,12 +14,14 @@ export class Player {
           }
       }
 
-      if (activePlayers.length > 2) {
+      if (activePlayers.length >= 3) {
           betCallback(0);
           return;
       }
       if (hero.hole_cards.filter(card => card.rank == 'A').length > 0) {
           betCallback(hero.stack);
+      }else{
+          betCallback(0);
       }
 
   }
