@@ -26,12 +26,19 @@ export class Player {
         } else if (activePlayers.length == 3) {
             console.log(gameState);
             if (gameState.dealer == gameState.players.indexOf(hero)) {
-               /* if (hero.stack > gameState.pot) {
-                    betCallback(gameState.pot);
+                if (gameState.bet_index == 4) {
+                    if (hero.stack > gameState.pot) {
+                        betCallback(gameState.pot);
+                    }else{
+                        betCallback(hero.stack);
+                    }
                 }else{
-                    betCallback(hero.stack);
-                }*/
-                this.basicStrat(hero, betCallback)
+                    if (((hero.hole_cards[0].rank == hero.hole_cards[1].rank) && this.contains(hero.hole_cards[0].rank, ['A', 'K', 'Q']))) {
+                        betCallback(hero.stack);
+                    }else{
+                        betCallback(0)
+                    }
+                }
             } else {
                 if (((hero.hole_cards[0].rank == hero.hole_cards[1].rank) && this.contains(hero.hole_cards[0].rank, ['A', 'K', 'Q']))) {
                     betCallback(hero.stack);
