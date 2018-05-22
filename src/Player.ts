@@ -18,7 +18,7 @@ export class Player {
           betCallback(0);
           return;
       }
-      if (hero.hole_cards.filter(card => card.rank == 'A').length > 0) {
+      if (hero.hole_cards.filter(card => card.rank == 'A').length > 0 || hero.hole_cards[0].rank == hero.hole_cards[1].rank) {
           betCallback(hero.stack);
       }else{
           betCallback(0);
