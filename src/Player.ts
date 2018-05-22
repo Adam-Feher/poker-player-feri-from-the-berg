@@ -4,7 +4,7 @@ export class Player {
 
   public betRequest(gameState: Gamestate, betCallback: (bet: number) => void): void {
     console.log(gameState);
-    betCallback(5);
+    betCallback(gameState.pot);
   }
 
   public showdown(gameState: Gamestate): void {
