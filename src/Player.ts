@@ -43,8 +43,9 @@ export class Player {
             if (gameState.bet_index == 6) {
                 if (activePlayers.filter(player => player.name == 'Texas Rangers').length > 0) {
                     this.basicStrat(hero, betCallback);
+                }else{
+                    betCallback(gameState.pot);
                 }
-                betCallback(gameState.pot);
             }else {
                 this.basicStrat(hero, betCallback);
             }
