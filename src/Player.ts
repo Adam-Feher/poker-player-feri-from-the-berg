@@ -24,6 +24,7 @@ export class Player {
         } else {
             this.basicStrat(hero, betCallback);
         }
+        betCallback(0);
     }
 
     public showdown(gameState: Gamestate): void {
