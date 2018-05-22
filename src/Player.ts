@@ -7,7 +7,7 @@ export class Player {
     private villainBet: number;
 
     public betRequest(gameState: Gamestate, betCallback: (bet: number) => void): void {
-        const activePlayers = gameState.players.filter(player => player.stack > 0);
+        const activePlayers = gameState.players.filter(player => player.stack + player.bet > 0);
 
         let hero = null;
         for (let player of activePlayers) {
@@ -38,7 +38,7 @@ export class Player {
             (this.haveCard('K',hero.hole_cards) &&
                 this.haveCardInRange(['Q', 'J', '10'],hero.hole_cards)) ||
             (this.haveCard('Q',hero.hole_cards) &&
-                this.haveCardInRange(['J', '10'],hero.hole_cards))) {
+                this.haveCardInRange(['J', '10'],hero.hole_cards) && hero.hole_cards[0].suit == hero.hole_cards[1].suit)) {
             betCallback(hero.stack);
         }else{
             betCallback(0);
